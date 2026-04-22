@@ -1,3 +1,10 @@
+import dotenv from "dotenv";
+// Load environment variables from multiple possible locations
+dotenv.config({ path: "/vercel/share/.env.project" });
+dotenv.config({ path: ".env" });
+
+console.log("[v0] Environment loaded, POSTGRES_URL exists:", !!process.env.POSTGRES_URL);
+
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
